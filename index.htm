@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panificadora Zorzi | Pães Artesanais & Confeitaria em Joinville</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zorzi: {
+                            50: '#faf6f0',
+                            100: '#f3e9d7',
+                            200: '#e5d1ae',
+                            300: '#d4b37f',
+                            400: '#c59556',
+                            500: '#b27a3a',
+                            600: '#975e2f',
+                            700: '#794528',
+                            800: '#633926',
+                            900: '#523023',
+                            950: '#2d1811',
+                        },
+                        terracotta: '#c85a32',
+                        cream: '#fdfbf7',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(45, 24, 17, 0.75) 0%, rgba(45, 24, 17, 0.88) 100%);
+        }
+        .wood-texture {
+            background-color: #2d1811;
+            background-image: radial-gradient(#4a2b1f 0.75px, transparent 0.75px), radial-gradient(#4a2b1f 0.75px, #2d1811 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans bg-cream text-zorzi-950 selection:bg-zorzi-300 selection:text-zorzi-950">
+
+    <!-- Top Bar Notice -->
+    <div class="bg-zorzi-900 text-zorzi-100 text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        <span>Fornada Quentinha de Pão Francês saindo às <strong>16:30h</strong>! Venha conferir!</span>
+        <a href="#fornadas" class="underline hover:text-white ml-2 text-xs">Ver Horários</a>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zorzi-100 transition-all duration-300 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group shrink-0">
+                    <div class="w-12 h-12 rounded-full bg-zorzi-700 flex items-center justify-center text-zorzi-100 shadow-md group-hover:bg-terracotta transition-colors">
+                        <i class="fa-solid fa-wheat-awn text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-tight text-zorzi-900 block leading-none">ZORZI</span>
+                        <span class="text-[10px] tracking-widest text-zorzi-600 uppercase font-semibold">Panificadora & Confeitaria</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav (Linha única organizada) -->
+                <nav class="hidden md:flex items-center gap-6 lg:gap-8 font-medium text-sm text-zorzi-800 whitespace-nowrap">
+                    <a href="#inicio" class="hover:text-terracotta transition-colors py-1 border-b-2 border-transparent hover:border-terracotta">Início</a>
+                    <a href="#sobre" class="hover:text-terracotta transition-colors py-1 border-b-2 border-transparent hover:border-terracotta">Nossa História</a>
+                    <a href="#produtos" class="hover:text-terracotta transition-colors py-1 border-b-2 border-transparent hover:border-terracotta">Produtos</a>
+                    <a href="#fornadas" class="hover:text-terracotta transition-colors py-1 border-b-2 border-transparent hover:border-terracotta">Fornadas</a>
+                    <a href="#encomendas" class="hover:text-terracotta transition-colors py-1 border-b-2 border-transparent hover:border-terracotta">Encomendas</a>
+                    <a href="#contato" class="hover:text-terracotta transition-colors py-1 border-b-2 border-transparent hover:border-terracotta">Contato</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-zorzi-900 p-2 rounded-lg hover:bg-zorzi-50 focus:outline-none" aria-label="Abrir menu">
+                    <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-zorzi-100 bg-white px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="mobile-link block py-2 text-zorzi-800 font-medium hover:text-terracotta border-b border-gray-100">Início</a>
+            <a href="#sobre" class="mobile-link block py-2 text-zorzi-800 font-medium hover:text-terracotta border-b border-gray-100">Nossa História</a>
+            <a href="#produtos" class="mobile-link block py-2 text-zorzi-800 font-medium hover:text-terracotta border-b border-gray-100">Produtos</a>
+            <a href="#fornadas" class="mobile-link block py-2 text-zorzi-800 font-medium hover:text-terracotta border-b border-gray-100">Fornadas</a>
+            <a href="#encomendas" class="mobile-link block py-2 text-zorzi-800 font-medium hover:text-terracotta border-b border-gray-100">Encomendas</a>
+            <a href="#contato" class="mobile-link block py-2 text-zorzi-800 font-medium hover:text-terracotta">Contato</a>
+        </div>
+    </header>
+
+    <!-- Hero Section (Sem o badge superior) -->
+    <section id="inicio" class="relative bg-zorzi-950 text-white min-h-[80vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1920&auto=format&fit=crop" alt="Pães artesanais recém saídos do forno" class="w-full h-full object-cover object-center scale-105 transform hover:scale-100 transition-transform duration-1000">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+                O Verdadeiro Sabor do <br class="hidden sm:inline">
+                <span class="italic font-normal text-zorzi-200">Pão Artesanal</span> na Sua Mesa
+            </h1>
+
+            <p class="text-lg sm:text-xl text-zorzi-100/90 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Produtos feitos diariamente com ingredientes selecionados, receitas tradicionais e o carinho familiar de sempre.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#produtos" class="w-full sm:w-auto px-8 py-4 bg-terracotta hover:bg-amber-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-store"></i>
+                    <span>Ver Nosso Cardápio</span>
+                </a>
+                <a href="#encomendas" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/30 backdrop-blur-sm transition-all duration-300 text-base flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-cake-candles text-amber-300"></i>
+                    <span>Fazer Encomendas</span>
+                </a>
+            </div>
+
+            <!-- Highlights Pill -->
+            <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-8 border-t border-white/10">
+                <div class="text-center">
+                    <span class="block font-serif text-2xl font-bold text-zorzi-200">Desde 2011</span>
+                    <span class="text-xs text-zorzi-100/70 uppercase">No Bairro Adhemar Garcia</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-serif text-2xl font-bold text-zorzi-200">100%</span>
+                    <span class="text-xs text-zorzi-100/70 uppercase">Familiar & Artesanal</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-serif text-2xl font-bold text-zorzi-200">Diário</span>
+                    <span class="text-xs text-zorzi-100/70 uppercase">Fornadas Quentinhas</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-serif text-2xl font-bold text-zorzi-200">Único</span>
+                    <span class="text-xs text-zorzi-100/70 uppercase">Receitas Exclusivas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa História -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Images Grid -->
+                <div class="lg:col-span-6 relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=800&auto=format&fit=crop" alt="Padeiro preparando massa" class="rounded-2xl shadow-lg object-cover h-64 sm:h-80 w-full">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop" alt="Bolo confeitado Zorzi" class="rounded-2xl shadow-lg object-cover h-64 sm:h-80 w-full mt-8">
+                    </div>
+                    <!-- Badge Overlay -->
+                    <div class="absolute -bottom-6 -right-2 sm:right-6 bg-zorzi-700 text-white p-6 rounded-2xl shadow-xl max-w-xs hidden sm:block">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-heart text-amber-400 text-xl"></i>
+                            <h4 class="font-serif font-bold text-lg">Tradição Familiar</h4>
+                        </div>
+                        <p class="text-xs text-zorzi-100 leading-relaxed">Produtos feitos com amor e carinho todos os dias.</p>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="lg:col-span-6">
+                    <span class="text-terracotta font-semibold text-sm tracking-wider uppercase">Nossa Tradição</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-zorzi-950 mt-2 mb-6 leading-tight">
+                        A História da Panificadora Zorzi
+                    </h2>
+                    
+                    <!-- Frase oficial do site original -->
+                    <div class="bg-zorzi-50 border-l-4 border-zorzi-600 p-6 rounded-r-2xl mb-8 shadow-sm">
+                        <p class="text-zorzi-900 text-base sm:text-lg font-serif italic leading-relaxed">
+                            "A Zorzi iniciou os trabalhos em 2011 no bairro Adhemar Garcia (Joinville-SC), conhecida por ser uma panificadora familiar acolhedora que atende seu público com produtos artesanais de receitas únicas, garantindo o tradicionalismo."
+                        </p>
+                    </div>
+
+                    <!-- Informações complementares -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-zorzi-100 text-zorzi-800 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-house-user text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-zorzi-900 text-sm">Ambiente Acolhedor</h4>
+                                <p class="text-xs text-gray-500">Atendimento próximo e caloroso para cada cliente.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-zorzi-100 text-zorzi-800 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-mortar-pestle text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-zorzi-900 text-sm">Receitas Únicas</h4>
+                                <p class="text-xs text-gray-500">Segredos culinários guardados com orgulho.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Horário de Fornadas Quentinhas -->
+    <section id="fornadas" class="wood-texture text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-3">Sabor Inconfundível</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-zorzi-100">Horários das Fornadas Quentinhas</h2>
+                <p class="text-zorzi-200/80 mt-2 text-sm sm:text-base">Programe-se para buscar seu pão quentinho direto do forno nos nossos principais horários do dia.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Fornada 1 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-amber-500/50 transition-all duration-300 relative group overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-sun text-8xl text-amber-400"></i>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full">Primeira Fornada</span>
+                        <i class="fa-solid fa-sun text-amber-400 text-xl"></i>
+                    </div>
+                    <div class="font-serif text-4xl font-bold text-white mb-2">07:00 <span class="text-sm font-sans font-normal text-zorzi-200">da manhã</span></div>
+                    <h3 class="font-semibold text-zorzi-100 text-lg mb-1">Café da Manhã Perfeito</h3>
+                    <p class="text-xs text-zorzi-200/70">Pão Francês crocante, Pão na Chapa, Baguetes e Broa de Milho fresquinhas.</p>
+                </div>
+
+                <!-- Fornada 2 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-amber-500/50 transition-all duration-300 relative group overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-cloud-sun text-8xl text-amber-400"></i>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full">Meio do Dia</span>
+                        <i class="fa-solid fa-cloud-sun text-amber-400 text-xl"></i>
+                    </div>
+                    <div class="font-serif text-4xl font-bold text-white mb-2">12:00 <span class="text-sm font-sans font-normal text-zorzi-200">meio-dia</span></div>
+                    <h3 class="font-semibold text-zorzi-100 text-lg mb-1">Almoço & Lanche</h3>
+                    <p class="text-xs text-zorzi-200/70">Pão de Queijo especial, Mini Salgados, Tortas Salgadas e Pão Caseiro.</p>
+                </div>
+
+                <!-- Fornada 3 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-amber-500/50 transition-all duration-300 relative group overflow-hidden border-amber-500/40">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-moon text-8xl text-amber-400"></i>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-terracotta text-white text-xs font-bold px-3 py-1 rounded-full">Fornadas da Tarde</span>
+                        <i class="fa-solid fa-fire text-amber-400 text-xl animate-bounce"></i>
+                    </div>
+                    <div class="font-serif text-4xl font-bold text-white mb-2">16:30 <span class="text-sm font-sans font-normal text-zorzi-200">da tarde</span></div>
+                    <h3 class="font-semibold text-zorzi-100 text-lg mb-1">Café da Tarde Especial</h3>
+                    <p class="text-xs text-zorzi-200/70">Pão Francês quentinho, Sonhos recheados, Croissants e Cuca Alemã tradicional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vitrine de Produtos -->
+    <section id="produtos" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-terracotta font-semibold text-sm tracking-wider uppercase">Nosso Cardápio</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-zorzi-950 mt-1">Produtos Destaque</h2>
+                </div>
+                <!-- Filter Buttons -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 mt-6 md:mt-0 hide-scrollbar" id="filter-container">
+                    <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium bg-zorzi-800 text-white transition-all whitespace-nowrap shadow-sm" data-category="all">Todos</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white text-zorzi-800 hover:bg-zorzi-100 transition-all border border-zorzi-200 whitespace-nowrap" data-category="paes">Pães Artesanais</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white text-zorzi-800 hover:bg-zorzi-100 transition-all border border-zorzi-200 whitespace-nowrap" data-category="doces">Bolos & Confeitaria</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white text-zorzi-800 hover:bg-zorzi-100 transition-all border border-zorzi-200 whitespace-nowrap" data-category="salgados">Salgados & Tortas</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white text-zorzi-800 hover:bg-zorzi-100 transition-all border border-zorzi-200 whitespace-nowrap" data-category="cafes">Cafés & Matinais</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="products-grid">
+                <!-- Card 1 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-zorzi-100 flex flex-col" data-category="paes">
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?q=80&w=600&auto=format&fit=crop" alt="Pão Francês Tradicional" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Fresco Hoje</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-zorzi-600 uppercase">Pães</span>
+                            <h3 class="font-serif font-bold text-lg text-zorzi-950 mb-1">Pão Francês Crocante</h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">Casca dourada e crocante, miolo macio e aerado. O clássico da Zorzi.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Preço</span>
+                                <span class="font-bold text-zorzi-900 text-lg">R$ 18,90 <span class="text-xs font-normal text-gray-500">/kg</span></span>
+                            </div>
+                            <button onclick="openModal('Pão Francês Crocante', 'R$ 18,90 /kg', 'Casca dourada e crocante, miolo macio e aerado. Produzido diariamente com ingredientes de qualidade.', 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?q=80&w=600&auto=format&fit=crop')" class="w-10 h-10 rounded-xl bg-zorzi-100 hover:bg-zorzi-700 hover:text-white text-zorzi-900 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-zorzi-100 flex flex-col" data-category="paes">
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop" alt="Pão de Fermentação Natural Levain" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-terracotta text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Especial</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-zorzi-600 uppercase">Pães Especial</span>
+                            <h3 class="font-serif font-bold text-lg text-zorzi-950 mb-1">Sourdough Artesanal</h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">Pão rústico de fermentação lenta de 24 horas, acidez equilibrada.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Unidade (~500g)</span>
+                                <span class="font-bold text-zorzi-900 text-lg">R$ 22,00</span>
+                            </div>
+                            <button onclick="openModal('Sourdough Artesanal', 'R$ 22,00', 'Pão rústico artesanal de fermentação lenta de 24 horas. Sem conservantes químicos, de facílima digestão.', 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop')" class="w-10 h-10 rounded-xl bg-zorzi-100 hover:bg-zorzi-700 hover:text-white text-zorzi-900 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-zorzi-100 flex flex-col" data-category="doces">
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop" alt="Bolo Trufado Zorzi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-amber-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mais Pedido</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-zorzi-600 uppercase">Confeitaria</span>
+                            <h3 class="font-serif font-bold text-lg text-zorzi-950 mb-1">Bolo Trufado Zorzi</h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">Massa fofinha de cacau com recheio cremoso de brigadeiro trufado.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Fatia Generosa</span>
+                                <span class="font-bold text-zorzi-900 text-lg">R$ 14,50</span>
+                            </div>
+                            <button onclick="openModal('Bolo Trufado Zorzi', 'R$ 14,50', 'Deliciosa fatia de bolo trufado com cobertura generosa de brigadeiro gourmet e morangos frescos.', 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop')" class="w-10 h-10 rounded-xl bg-zorzi-100 hover:bg-zorzi-700 hover:text-white text-zorzi-900 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-zorzi-100 flex flex-col" data-category="doces">
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600&auto=format&fit=crop" alt="Croissant Francês" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-zorzi-600 uppercase">Viennoiserie</span>
+                            <h3 class="font-serif font-bold text-lg text-zorzi-950 mb-1">Croissant da Casa</h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">Folhado leve e crocante preparado com manteiga selecionada.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Unidade</span>
+                                <span class="font-bold text-zorzi-900 text-lg">R$ 11,00</span>
+                            </div>
+                            <button onclick="openModal('Croissant da Casa', 'R$ 11,00', 'Croissant folhado feito segundo a autêntica receita com manteiga pura.', 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600&auto=format&fit=crop')" class="w-10 h-10 rounded-xl bg-zorzi-100 hover:bg-zorzi-700 hover:text-white text-zorzi-900 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-zorzi-100 flex flex-col" data-category="salgados">
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=600&auto=format&fit=crop" alt="Coxinha Cremosa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-zorzi-600 uppercase">Salgados</span>
+                            <h3 class="font-serif font-bold text-lg text-zorzi-950 mb-1">Coxinha Cremosa</h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">Massa dourada super leve, recheio de frango desfiado com requeijão.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Unidade Grande</span>
+                                <span class="font-bold text-zorzi-900 text-lg">R$ 9,50</span>
+                            </div>
+                            <button onclick="openModal('Coxinha Cremosa', 'R$ 9,50', 'Coxinha artesanal recheada com frango temperado na hora e requeijão cremoso.', 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=600&auto=format&fit=crop')" class="w-10 h-10 rounded-xl bg-zorzi-100 hover:bg-zorzi-700 hover:text-white text-zorzi-900 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-zorzi-100 flex flex-col" data-category="salgados">
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1626844131082-256783844137?q=80&w=600&auto=format&fit=crop" alt="Empadão de Palmito" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-zorzi-600 uppercase">Tortas & Salgados</span>
+                            <h3 class="font-serif font-bold text-lg text-zorzi-950 mb-1">Empadão de Palmito</h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">Massa podre tradicional que derrete na boca, recheio cremoso.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Fatia Generosa</span>
+                                <span class="font-bold text-zorzi-900 text-lg">R$ 12,00</span>
+                            </div>
+                            <button onclick="openModal('Empadão de Palmito', 'R$ 12,00', 'Fatia caprichada de empadão de palmito com tempero suave e massa manteigada.', 'https://images.unsplash.com/photo-1626844131082-256783844137?q=80&w=600&auto=format&fit=crop')" class="w-10 h-10 rounded-xl bg-zorzi-100 hover:bg-zorzi-700 hover:text-white text-zorzi-900 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-zorzi-100 flex flex-col" data-category="cafes">
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop" alt="Cappuccino Especial" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-zorzi-600 uppercase">Cafeteria</span>
+                            <h3 class="font-serif font-bold text-lg text-zorzi-950 mb-1">Cappuccino Zorzi</h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">Espresso moído na hora, leite vaporizado e canela.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Xícara 200ml</span>
+                                <span class="font-bold text-zorzi-900 text-lg">R$ 10,50</span>
+                            </div>
+                            <button onclick="openModal('Cappuccino Zorzi', 'R$ 10,50', 'Preparo artesanal com grãos arábica, vaporizado na medida certa com toque de canela.', 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop')" class="w-10 h-10 rounded-xl bg-zorzi-100 hover:bg-zorzi-700 hover:text-white text-zorzi-900 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-zorzi-100 flex flex-col" data-category="doces">
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop" alt="Sonho de Creme Tradicional" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-zorzi-600 uppercase">Clássicos</span>
+                            <h3 class="font-serif font-bold text-lg text-zorzi-950 mb-1">Sonho de Creme</h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">Fofíssimo, polvilhado com açúcar refinado e recheio de creme caseiro.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Unidade</span>
+                                <span class="font-bold text-zorzi-900 text-lg">R$ 7,50</span>
+                            </div>
+                            <button onclick="openModal('Sonho de Creme', 'R$ 7,50', 'Famoso sonho Zorzi com recheio de creme caseiro aromatizado com fava de baunilha.', 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop')" class="w-10 h-10 rounded-xl bg-zorzi-100 hover:bg-zorzi-700 hover:text-white text-zorzi-900 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Encomendas & Kit Festa -->
+    <section id="encomendas" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5">
+                    <span class="text-terracotta font-semibold text-sm tracking-wider uppercase">Eventos & Comemorações</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-zorzi-950 mt-2 mb-4">Aceitamos Encomendas para a sua Festa</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Faça do seu evento corporativo, aniversário ou reunião de família um momento inesquecível com nossos salgadinhos assados e fritos, mini doces e bolos personalizados.
+                    </p>
+
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-3 text-sm font-medium text-zorzi-900">
+                            <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                            <span>Cento de Salgados (Coxinhas, Empadinhas, Risóles)</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-zorzi-900">
+                            <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                            <span>Bolos Temáticos & Tortas Doces sob medida</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-zorzi-900">
+                            <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                            <span>Kits para Coffee Break de empresas</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-3">
+                        <i class="fa-solid fa-clock text-amber-600 text-lg shrink-0 mt-0.5"></i>
+                        <span>Recomendamos realizar sua encomenda com no mínimo <strong>24h a 48h de antecedência</strong>.</span>
+                    </div>
+                </div>
+
+                <!-- Form Card -->
+                <div class="lg:col-span-7">
+                    <div class="bg-cream rounded-3xl p-6 sm:p-8 border border-zorzi-200 shadow-xl">
+                        <h3 class="font-serif text-2xl font-bold text-zorzi-900 mb-2">Simule ou Solicite seu Orçamento</h3>
+                        <p class="text-xs text-gray-500 mb-6">Preencha abaixo para gerar uma mensagem direta pré-formatada para nosso atendimento.</p>
+
+                        <form id="order-form" onsubmit="sendOrderWhatsApp(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-zorzi-800 uppercase mb-1">Seu Nome</label>
+                                    <input type="text" id="order-name" required placeholder="Ex: Maria Silva" class="w-full px-4 py-3 rounded-xl border border-zorzi-200 focus:outline-none focus:ring-2 focus:ring-zorzi-500 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-zorzi-800 uppercase mb-1">Data do Evento</label>
+                                    <input type="date" id="order-date" required class="w-full px-4 py-3 rounded-xl border border-zorzi-200 focus:outline-none focus:ring-2 focus:ring-zorzi-500 text-sm text-gray-700">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-zorzi-800 uppercase mb-1">Tipo de Evento</label>
+                                    <select id="order-type" class="w-full px-4 py-3 rounded-xl border border-zorzi-200 focus:outline-none focus:ring-2 focus:ring-zorzi-500 text-sm text-gray-700">
+                                        <option value="Aniversário">Festa de Aniversário</option>
+                                        <option value="Empresarial">Eventos / Coffee Break</option>
+                                        <option value="Reunião Familiar">Almoço / Reunião Familiar</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-zorzi-800 uppercase mb-1">Qtd. Estimada de Pessoas</label>
+                                    <input type="number" id="order-people" min="5" placeholder="Ex: 20 pessoas" class="w-full px-4 py-3 rounded-xl border border-zorzi-200 focus:outline-none focus:ring-2 focus:ring-zorzi-500 text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-zorzi-800 uppercase mb-1">O que você gostaria de incluir?</label>
+                                <textarea id="order-details" rows="3" placeholder="Ex: 100 salgadinhos sortidos, 1 bolo trufado de 2kg e 20 mini sonhos..." class="w-full px-4 py-3 rounded-xl border border-zorzi-200 focus:outline-none focus:ring-2 focus:ring-zorzi-500 text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-base">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span>Enviar Encomenda pelo WhatsApp</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Localização & Horários de Funcionamento -->
+    <section id="contato" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                
+                <!-- Info Cards -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                    <div>
+                        <span class="text-terracotta font-semibold text-sm tracking-wider uppercase">Venha nos Visitar</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-zorzi-950 mt-1 mb-6">Localização & Atendimento</h2>
+                        <p class="text-gray-600 text-sm mb-8 leading-relaxed">
+                            Estamos prontos para te receber com um café quentinho e o carinho de sempre.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Endereço -->
+                        <div class="bg-white p-5 rounded-2xl border border-zorzi-100 shadow-sm flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-zorzi-100 text-zorzi-800 flex items-center justify-center shrink-0 text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-zorzi-900 text-base">Nosso Endereço</h4>
+                                <p class="text-sm text-gray-600 mt-0.5">R. Golfinho, 620 - Jarivatuba, Joinville - SC, 89230-360</p>
+                                <a href="https://maps.google.com/?q=R.+Golfinho,+620+-+Jarivatuba,+Joinville+-+SC,+89230-360" target="_blank" class="text-xs text-terracotta font-semibold hover:underline inline-block mt-1">Abrir no GPS &rarr;</a>
+                            </div>
+                        </div>
+
+                        <!-- Telefone & WhatsApp -->
+                        <div class="bg-white p-5 rounded-2xl border border-zorzi-100 shadow-sm flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 text-xl">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-zorzi-900 text-base">Telefone / WhatsApp</h4>
+                                <p class="text-sm text-gray-600 mt-0.5">(47) 3227-5378</p>
+                                <a href="https://wa.me/554732275378" target="_blank" class="text-xs text-emerald-600 font-semibold hover:underline inline-block mt-1">Iniciar conversa no WhatsApp &rarr;</a>
+                            </div>
+                        </div>
+
+                        <!-- Instagram -->
+                        <div class="bg-white p-5 rounded-2xl border border-zorzi-100 shadow-sm flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center shrink-0 text-xl">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-zorzi-900 text-base">Instagram Oficial</h4>
+                                <p class="text-sm text-gray-600 mt-0.5">@panificadorazorzi</p>
+                                <a href="https://www.instagram.com/panificadorazorzi/" target="_blank" rel="noopener noreferrer" class="text-xs text-pink-700 font-semibold hover:underline inline-block mt-1">Siga-nos no Instagram &rarr;</a>
+                            </div>
+                        </div>
+
+                        <!-- Horários -->
+                        <div class="bg-white p-5 rounded-2xl border border-zorzi-100 shadow-sm flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-zorzi-100 text-zorzi-800 flex items-center justify-center shrink-0 text-xl">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div class="w-full">
+                                <h4 class="font-bold text-zorzi-900 text-base">Horário de Funcionamento</h4>
+                                <div class="mt-2 text-xs text-gray-600 space-y-1">
+                                    <div class="flex justify-between border-b border-gray-100 pb-1">
+                                        <span>Segunda a Sexta:</span>
+                                        <strong class="text-zorzi-900">06:00 às 20:00</strong>
+                                    </div>
+                                    <div class="flex justify-between border-b border-gray-100 pb-1">
+                                        <span>Sábados:</span>
+                                        <strong class="text-zorzi-900">06:30 às 19:30</strong>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Domingos e Feriados:</span>
+                                        <strong class="text-zorzi-900">07:00 às 13:00</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Placeholder Graphic -->
+                <div class="lg:col-span-7 bg-white rounded-3xl overflow-hidden border border-zorzi-200 shadow-lg min-h-[350px] relative flex flex-col justify-center items-center p-8 text-center">
+                    <div class="w-20 h-20 bg-zorzi-100 text-zorzi-700 rounded-full flex items-center justify-center text-4xl mb-4 animate-bounce">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-2xl text-zorzi-900 mb-1">Panificadora Zorzi</h3>
+                    <p class="text-sm font-semibold text-zorzi-700 mb-1">R. Golfinho, 620 - Jarivatuba</p>
+                    <p class="text-xs text-gray-500 max-w-md mb-6">Joinville - SC, 89230-360</p>
+                    
+                    <a href="https://maps.google.com/?q=Rua+Golfinho+620+Jarivatuba+Joinville+SC" target="_blank" class="bg-zorzi-800 hover:bg-zorzi-900 text-white font-semibold px-6 py-3 rounded-xl shadow transition-all text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-diamond-turn-right"></i>
+                        <span>Como Chegar via Google Maps</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zorzi-950 text-zorzi-100 pt-16 pb-8 border-t border-zorzi-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Brand Info -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-zorzi-700 flex items-center justify-center text-zorzi-100">
+                            <i class="fa-solid fa-wheat-awn text-xl"></i>
+                        </div>
+                        <span class="font-serif text-2xl font-bold tracking-tight text-white">ZORZI</span>
+                    </div>
+                    <p class="text-xs text-zorzi-200/70 leading-relaxed mb-4">
+                        A Zorzi iniciou os trabalhos em 2011 no bairro Adhemar Garcia (Joinville-SC), panificadora familiar com receitas únicas e tradicionalismo.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="https://wa.me/554732275378" target="_blank" class="w-8 h-8 rounded-full bg-white/10 hover:bg-emerald-600 text-white flex items-center justify-center text-xs transition-colors" title="WhatsApp Oficial"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/panificadorazorzi/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-pink-600 text-white flex items-center justify-center text-xs transition-colors" title="Instagram Oficial"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Navegação</h4>
+                    <ul class="space-y-2 text-xs text-zorzi-200/80">
+                        <li><a href="#inicio" class="hover:text-amber-400 transition-colors">Início</a></li>
+                        <li><a href="#sobre" class="hover:text-amber-400 transition-colors">Nossa História</a></li>
+                        <li><a href="#produtos" class="hover:text-amber-400 transition-colors">Produtos Destaque</a></li>
+                        <li><a href="#fornadas" class="hover:text-amber-400 transition-colors">Horários de Fornada</a></li>
+                        <li><a href="#encomendas" class="hover:text-amber-400 transition-colors">Encomendas</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Produtos</h4>
+                    <ul class="space-y-2 text-xs text-zorzi-200/80">
+                        <li><a href="#produtos" class="hover:text-amber-400 transition-colors">Pães Artesanais</a></li>
+                        <li><a href="#produtos" class="hover:text-amber-400 transition-colors">Bolos e Confeitaria</a></li>
+                        <li><a href="#produtos" class="hover:text-amber-400 transition-colors">Salgados e Empadões</a></li>
+                        <li><a href="#produtos" class="hover:text-amber-400 transition-colors">Cafés Especiais</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Contato</h4>
+                    <p class="text-xs text-zorzi-200/80 mb-2"><i class="fa-solid fa-location-dot mr-2 text-amber-400"></i> R. Golfinho, 620 - Jarivatuba, Joinville - SC</p>
+                    <p class="text-xs text-zorzi-200/80 mb-2"><i class="fa-brands fa-whatsapp mr-2 text-emerald-400"></i> (47) 3227-5378</p>
+                    <p class="text-xs text-zorzi-200/80 mb-4"><i class="fa-brands fa-instagram mr-2 text-pink-400"></i> @panificadorazorzi</p>
+                    <div class="flex flex-col gap-2">
+                        <a href="https://wa.me/554732275378" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-4 py-2 rounded-lg text-xs transition-colors w-fit">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>WhatsApp Oficial</span>
+                        </a>
+                        <a href="https://www.instagram.com/panificadorazorzi/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-pink-700 hover:bg-pink-800 text-white font-medium px-4 py-2 rounded-lg text-xs transition-colors w-fit">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>Ver Instagram</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-zorzi-200/50">
+                <p>&copy; Panificadora Zorzi. Todos os direitos reservados.</p>
+                <p class="mt-2 sm:mt-0">Desde 2011 no bairro Adhemar Garcia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl transition-all transform duration-300">
+            <div class="relative h-56">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-white/80 hover:bg-white text-zorzi-900 w-9 h-9 rounded-full flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 id="modal-title" class="font-serif font-bold text-2xl text-zorzi-900"></h3>
+                    <span id="modal-price" class="font-bold text-xl text-terracotta"></span>
+                </div>
+                <p id="modal-desc" class="text-sm text-gray-600 mb-6 leading-relaxed"></p>
+                
+                <div class="flex items-center gap-3">
+                    <a id="modal-whatsapp-btn" href="#" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-center text-sm transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Consultar no WhatsApp</span>
+                    </a>
+                    <button onclick="closeModal()" class="px-5 py-3 border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl text-sm transition-colors">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Interativo -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Category Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-zorzi-800', 'text-white', 'active');
+                    b.classList.add('bg-white', 'text-zorzi-800');
+                });
+                btn.classList.add('bg-zorzi-800', 'text-white', 'active');
+                btn.classList.remove('bg-white', 'text-zorzi-800');
+
+                const category = btn.dataset.category;
+
+                productCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Product Modal Logic
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalPrice = document.getElementById('modal-price');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalWaBtn = document.getElementById('modal-whatsapp-btn');
+
+        function openModal(title, price, desc, imgSrc) {
+            modalTitle.textContent = title;
+            modalPrice.textContent = price;
+            modalDesc.textContent = desc;
+            modalImg.src = imgSrc;
+            
+            const encodedText = encodeURIComponent(`Olá Panificadora Zorzi! Gostaria de saber sobre: ${title} (${price})`);
+            modalWaBtn.href = `https://wa.me/554732275378?text=${encodedText}`;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // WhatsApp Order Generator Form
+        function sendOrderWhatsApp(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('order-name').value;
+            const date = document.getElementById('order-date').value;
+            const type = document.getElementById('order-type').value;
+            const people = document.getElementById('order-people').value;
+            const details = document.getElementById('order-details').value;
+
+            const text = `*Orçamento de Encomenda - Panificadora Zorzi*\n\n` +
+                         `*Nome:* ${name}\n` +
+                         `*Data do Evento:* ${date}\n` +
+                         `*Tipo de Evento:* ${type}\n` +
+                         `*Pessoas:* ${people || 'Não informado'}\n` +
+                         `*Detalhes:* ${details || 'Sem observações'}`;
+
+            const encoded = encodeURIComponent(text);
+            window.open(`https://wa.me/554732275378?text=${encoded}`, '_blank');
+        }
+    </script>
+</body>
+</html>
